@@ -8,7 +8,6 @@ const handler = nc<NextApiRequest, NextApiResponse>({
 	onNoMatch,
 	attachParams: true,
 });
-
-handler.use('/api/feat/', routes.feat.root);
+handler.use('/api/feat/more', routes.feat.more);
 
 export default handler;

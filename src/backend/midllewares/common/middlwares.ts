@@ -8,9 +8,8 @@ export const commonMidllwareOne = (
 ) => {
 	console.log('********************');
 	console.log('* Common Midllware *');
+	console.log(req.query);
 	console.log('********************');
-	console.log('Method:', req.method);
-	console.log('URL:', req.url);
 
 	next();
 };

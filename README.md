@@ -6,5 +6,5 @@ Template for `NEXTJS` REST api application using `next-connect`. `Nextjs` routin
 
 - Branch main is a starter
 - Branch per-route is using `next-connect` instance per route. That is we keep `Nextjs` routing intact while using `nc` to handle the rest.
-- Branch per folder is we keep one level of `Nextjs` routing (on folder under `/api/`) and the entire routing is handled using `[[...slug]]` optional catch-all route for that spesific route.
-- Branch like-express is handling the entire API from one `/api/[[...slug]].ts` file.
+- Branch per folder is same as above but with smarter routing solution that looks similar to `express`.
+- Branch like-express is handling the entire API from one `/api/[[...slug]].ts` file. NOT RECOMMENDED.. SEE ISSUE I COMMENTED ON HERE [https://github.com/hoangvvo/next-connect/issues/131]

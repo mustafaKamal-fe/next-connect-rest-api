@@ -8,8 +8,7 @@ export const featureSpesificMidllware = (
 ) => {
 	console.log('********************');
 	console.log('* Feature Midllware *');
-	console.log('Index Page');
-
+	console.log(req.method);
 	console.log('********************');
 	next();
 };
@@ -21,7 +20,7 @@ export const featureSpesificMidllwareTwo = (
 ) => {
 	console.log('*********************');
 	console.log('* Feature Midllware *');
-	console.log('id Page');
+	console.log(req.url);
 	console.log('********************');
 	next();
 };

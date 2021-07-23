@@ -1,33 +1,21 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import nc from 'next-connect';
-import controllers from '../../../src/backend/controllers';
 import midllewares from '../../../src/backend/midllewares';
 import { onError, onNoMatch } from '../../../src/backend/utils';
+import routes from '../../../src/backend/routes';
 
 const handler = nc<NextApiRequest, NextApiResponse>({
 	onError,
 	onNoMatch,
+	attachParams: true,
 });
 
 // App-Wide
 handler.use(midllewares.common);
 
 // Route-Wide
-handler.use(midllewares.subApp.id);
+handler.use(midllewares.subApp);
 
-/** Controllers */
-// POST
-handler.post(controllers.feat.id.doThisOnPostWithId);
+handler.use('/api/feat/:id', routes.feat.id);
 
-// GET
-handler.get(controllers.feat.id.doThisOnGet);
-
-// PUT
-handler.put(controllers.feat.id.doThisOnPut);
-
-// DELETE
-handler.delete(controllers.feat.id.doThisOnDelete);
-
-// PATCH
-handler.patch(controllers.feat.id.doThisOnPatch);
 export default handler;

@@ -1,14 +1,18 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+interface WithParams extends NextApiRequest {
+	params: any;
+}
 
 const doThisOnPost = (req: NextApiRequest, res: NextApiResponse) => {
 	let sentBody = req.body;
 	res.status(201).json({ sentBody });
 };
 
-const doThisOnPostWithId = (req: NextApiRequest, res: NextApiResponse) => {
+const doThisOnPostWithId = (req: WithParams, res: NextApiResponse) => {
 	let sentBody = req.body;
+	console.log('Params:', req.params);
 
-	res.status(201).json({ sentBody });
+	res.status(201).json({ sentBody, id: req.query.slug });
 };
 
 const doThisOnGet = (req: NextApiRequest, res: NextApiResponse) => {
@@ -29,9 +33,9 @@ const doThisOnPatch = (req: NextApiRequest, res: NextApiResponse) => {
 
 export default {
 	/**
-	 * Controllers for index page
+	 * Controllers for root url
 	 */
-	index: {
+	root: {
 		doThisOnGet,
 		doThisOnPost,
 		doThisOnPut,
@@ -39,7 +43,7 @@ export default {
 		doThisOnPatch,
 	},
 	/**
-	 * Controller for `/id` page
+	 * Controller for `/id` url
 	 */
 	id: {
 		doThisOnGet,
@@ -48,5 +52,15 @@ export default {
 		doThisOnDelete,
 		doThisOnPatch,
 		doThisOnPostWithId,
+	},
+	/**
+	 * Controller for `/more` url
+	 */
+	more: {
+		doThisOnGet,
+		doThisOnPost,
+		doThisOnPut,
+		doThisOnDelete,
+		doThisOnPatch,
 	},
 };

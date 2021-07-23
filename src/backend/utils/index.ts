@@ -11,7 +11,6 @@ export function onError(
 
 	res.status(500).end(err.toString());
 	// OR: you may want to continue
-	next();
 }
 
 export function onNoMatch(req: NextApiRequest, res: NextApiResponse) {
